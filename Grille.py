@@ -18,14 +18,16 @@ class Grille:
         return -1
 
     # méthode pour afficher la grille
-    def afficher(self):
-        for y in range(1, self.MaxY + 1):
-            for x in range(1, self.MaxX + 1):
-                if (x, y) in self.Danger:
+    def afficher(self, droneX=None, droneY=None):
+        for y in range(0, self.MaxY + 1):
+            for x in range(0, self.MaxX + 1):
+
+                if (x, y) == (droneX, droneY):
+                    print("D", end=" ")
+
+                elif (x, y) in self.Danger:
                     print("X", end=" ")
+
                 else:
                     print(".", end=" ")
             print()
-
-g = Grille(5, 5)
-g.afficher()
